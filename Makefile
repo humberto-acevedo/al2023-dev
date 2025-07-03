@@ -29,6 +29,7 @@ push:
 	docker push $(ECR_URI):latest
 
 pull:
+	aws ecr get-login-password --region $(REGION) | docker login --username AWS --password-stdin $(ECR_URI)
 	docker pull $(ECR_URI):latest
 
 list-containers:
